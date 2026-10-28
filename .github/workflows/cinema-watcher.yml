@@ -2,8 +2,13 @@ name: cinema-watcher
 
 on:
   schedule:
-    - cron: "*/20 * * * *"   # every 10 min; GitHub may delay scheduled runs
-  workflow_dispatch:          # lets you start a run manually from the Actions tab
+    - cron: "*/10 * * * *"   # every 10 min; GitHub may delay scheduled runs
+  workflow_dispatch:
+    inputs:
+      test:
+        description: "Send a test notification instead of checking"
+        type: boolean
+        default: false
 
 permissions:
   contents: write             # needed to commit state.json back to the repo
@@ -22,7 +27,7 @@ jobs:
       - name: Run watcher
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
-        run: python3 cinema_watcher.py
+        run: python3 cinema_watcher.py ${{ inputs.test && '--test' || '' }}
 
       - name: Save state
         if: always()          # also save the failure counter when the run fails
