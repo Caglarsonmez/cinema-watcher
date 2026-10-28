@@ -2,7 +2,7 @@ name: cinema-watcher
 
 on:
   schedule:
-    - cron: "*/10 * * * *"   # every 10 min; GitHub may delay scheduled runs
+    - cron: "*/20 * * * *"   # every 10 min; GitHub may delay scheduled runs
   workflow_dispatch:          # lets you start a run manually from the Actions tab
 
 permissions:

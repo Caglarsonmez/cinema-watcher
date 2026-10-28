@@ -22,8 +22,8 @@ FILM_ID = "8105s2r"                 # Dune: Part Three
 GROUP = "prague"
 FROM_DATE = "2026-12-21"            # only care about this date and later
 REQUIRED_ATTRS = {"70-mm"}          # set() = any format
-CINEMA_IDS = set("1052")                  # e.g. {"1052"} = Flora only; empty = all of Prague
-NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "caglar_dune_watcher")  # env var wins (used by GitHub Actions)
+CINEMA_IDS = set()                  # e.g. {"1052"} = Flora only; empty = all of Prague
+NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "CHANGE-ME")  # env var wins (used by GitHub Actions)
 FAIL_ALERT_AFTER = 6                # alert if the script fails this many runs in a row
 # -----------------------------------------------------------------------
 
